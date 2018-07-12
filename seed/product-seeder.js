@@ -2,7 +2,13 @@ var Product = require('../models/product');
 
 var mongoose = require('mongoose');
 
-mongoose.connect('localhost:27017/backend');
+//Connection to mongoDB
+mongoose.Promise = global.Promise;
+if (process.env.PORT) {
+  mongoose.connect('mongodb://rohan1:rohan1@ds135421.mlab.com:35421/shophop');
+} else {
+  mongoose.connect('mongodb://localhost/backend');
+}
 
 var products = [
     new Product({
